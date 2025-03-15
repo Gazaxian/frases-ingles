@@ -5,8 +5,6 @@ ARQUIVO="$HOME/Documentos/Ingles/anotacoes.txt"
 
 # Criar diretório se não existir
 mkdir -p "$(dirname "$ARQUIVO")"
-
-# Criar o arquivo se não existir
 touch "$ARQUIVO"
 
 # Cores
@@ -16,7 +14,7 @@ VERDE="\e[32m"
 VERMELHO="\e[31m"
 RESET="\e[0m"
 
-# Adicionar frases ao arquivo (sem limite)
+# Adicionar frases ao arquivo (evitando duplicatas)
 adicionar_frases() {
     echo -e "${AZUL}Digite frases de inglês (inclua a pronúncia entre () e a tradução entre [])."
     echo -e "Pressione Enter sem digitar nada para sair.${RESET}"
@@ -24,17 +22,21 @@ adicionar_frases() {
     while true; do
         read -p "Frase: " frase
         [[ -z "$frase" ]] && break  # Sai do loop se a entrada estiver vazia
-        echo "$frase" >> "$ARQUIVO"
+        
+        # Verifica se a frase já existe no arquivo
+        if grep -Fxq "$frase" "$ARQUIVO"; then
+            echo -e "${VERMELHO}⚠️ Frase já cadastrada!${RESET}"
+        else
+            echo "$frase" >> "$ARQUIVO"
+            echo -e "${VERDE}✅ Frase salva!${RESET}"
+        fi
     done
-
-    echo -e "${VERDE}✅ Frases salvas com sucesso!${RESET}"
 }
 
-# Exibir todas as frases salvas (com espaçamento)
+# Exibir todas as frases salvas
 exibir_frases() {
     if [[ -s "$ARQUIVO" ]]; then
-        echo -e "\n📖 ${BRANCO}Frases salvas:${RESET}"
-        echo -e ""  # Espaço antes de exibir as frases
+        echo -e "\n📖 ${BRANCO}Frases salvas:${RESET}\n"
         while IFS= read -r linha; do
             frase=$(echo "$linha" | sed -E 's/\(.*\)//' | sed -E 's/\[.*\]//')
             pronuncia=$(echo "$linha" | grep -oP '\(.*?\)')
@@ -43,14 +45,14 @@ exibir_frases() {
             echo -e "${BRANCO}Frase: $frase${RESET}"
             [[ -n "$pronuncia" ]] && echo -e "${AZUL}Pronúncia: $pronuncia${RESET}"
             [[ -n "$traducao" ]] && echo -e "${VERDE}Tradução: $traducao${RESET}"
-            echo ""
+            echo -e "----------------------------------"  # Separador
         done < "$ARQUIVO"
     else
         echo -e "${VERMELHO}Nenhuma frase adicionada ainda.${RESET}"
     fi
 }
 
-# Pesquisar frases por palavra-chave e exibir frase completa (com espaçamento)
+# Pesquisar frases por palavra-chave
 pesquisar_frases() {
     echo -e "${AZUL}Digite o termo de busca:${RESET}"
     read termo
@@ -60,9 +62,8 @@ pesquisar_frases() {
     if [[ -z "$resultado" ]]; then
         echo -e "${VERMELHO}Nenhuma frase encontrada.${RESET}"
     else
-        echo -e "\n🔎 ${BRANCO}Resultados encontrados:${RESET}"
-        echo -e ""  # Espaço antes de exibir os resultados da pesquisa
-        echo -e "$resultado" | while IFS= read -r linha; do
+        echo -e "\n🔎 ${BRANCO}Resultados encontrados:$(echo "$resultado" | wc -l)${RESET}\n"
+        echo "$resultado" | while IFS= read -r linha; do
             frase=$(echo "$linha" | sed -E 's/\(.*\)//' | sed -E 's/\[.*\]//')
             pronuncia=$(echo "$linha" | grep -oP '\(.*?\)')
             traducao=$(echo "$linha" | grep -oP '\[.*?\]')
@@ -70,15 +71,14 @@ pesquisar_frases() {
             echo -e "${BRANCO}Frase: $frase${RESET}"
             [[ -n "$pronuncia" ]] && echo -e "${AZUL}Pronúncia: $pronuncia${RESET}"
             [[ -n "$traducao" ]] && echo -e "${VERDE}Tradução: $traducao${RESET}"
-            echo ""
+            echo -e "----------------------------------"
         done
     fi
 }
 
 # Menu principal
 while true; do
-    echo -e "\n📚 ${BRANCO}Diário de Inglês - Anotações Ilimitadas${RESET}"
-    echo -e ""  # Adiciona o espaço entre o título e as opções
+    echo -e "\n📚 ${BRANCO}Diário de Inglês - Anotações Ilimitadas${RESET}\n"
     echo -e "1) ✏️  Adicionar frases"
     echo -e "2) 📖 Ver todas as frases"
     echo -e "3) 🔍 Pesquisar frases"
