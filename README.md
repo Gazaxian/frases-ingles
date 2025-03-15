@@ -17,31 +17,15 @@ Este script permite salvar frases em inglês, com a pronúncia e tradução, de 
 3. Ao adicionar uma frase, você será solicitado a inserir a frase em inglês, a pronúncia e a tradução.
 4. Ao pesquisar, insira uma palavra-chave para procurar nas frases salvas. O script mostrará todas as frases que contêm a palavra pesquisada, com a pronúncia e a tradução.
 
-### Exemplo de Execução:
+O script solicitará:
 
-```bash
-$ ./anotacoes_inglês_ilimitado.sh
+A frase em inglês
+A pronúncia da frase
+A tradução da frase
+Além disso, você poderá pesquisar as frases por palavras-chave!
 
-O script fornecerá opções como:
-
-Adicionar nova frase.
-Pesquisar por palavra-chave.
-Exemplo de saída:
-Quando você adicionar uma nova frase, o script solicitará:
-
-Frase em inglês.
-Pronúncia da frase.
-Tradução da frase.
-Quando você pesquisar uma palavra-chave, o script exibirá as frases que contêm a palavra pesquisada, assim:
-
-vbnet
-Copiar
-Editar
-Frase: "I am learning English." 
-Pronúncia: "Ai ãm lérning Inglish."
-Tradução: "Eu estou aprendendo inglês."
 Dependências:
-grep
-sed
-awk
-Certifique-se de que essas ferramentas estão instaladas no seu sistema para que o script funcione corretamente.
+
+`grep`
+`sed`
+`awk`
