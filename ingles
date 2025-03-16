@@ -13,7 +13,7 @@ AZUL="\e[34m"
 VERDE="\e[32m"
 VERMELHO="\e[31m"
 AMARELO="\e[33m"
-LARANJA="\e[38;5;214m"  # Cor para a nova opção
+LARANJA="\e[38;5;214m" 
 RESET="\e[0m"
 
 # Variável para o limite de frases por página
