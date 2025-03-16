@@ -5,6 +5,8 @@ ARQUIVO="$HOME/Documentos/Ingles/anotacoes.txt"
 
 # Criar diretório se não existir
 mkdir -p "$(dirname "$ARQUIVO")"
+
+# Criar o arquivo se não existir
 touch "$ARQUIVO"
 
 # Cores
@@ -14,7 +16,7 @@ VERDE="\e[32m"
 VERMELHO="\e[31m"
 RESET="\e[0m"
 
-# Adicionar frases ao arquivo (evitando duplicatas)
+# Adicionar frases ao arquivo (sem limite)
 adicionar_frases() {
     echo -e "${AZUL}Digite frases de inglês (inclua a pronúncia entre () e a tradução entre [])."
     echo -e "Pressione Enter sem digitar nada para sair.${RESET}"
@@ -22,21 +24,17 @@ adicionar_frases() {
     while true; do
         read -p "Frase: " frase
         [[ -z "$frase" ]] && break  # Sai do loop se a entrada estiver vazia
-        
-        # Verifica se a frase já existe no arquivo
-        if grep -Fxq "$frase" "$ARQUIVO"; then
-            echo -e "${VERMELHO}⚠️ Frase já cadastrada!${RESET}"
-        else
-            echo "$frase" >> "$ARQUIVO"
-            echo -e "${VERDE}✅ Frase salva!${RESET}"
-        fi
+        echo "$frase" >> "$ARQUIVO"
     done
+
+    echo -e "${VERDE}✅ Frases salvas com sucesso!${RESET}"
 }
 
-# Exibir todas as frases salvas
+# Exibir todas as frases salvas (com espaçamento)
 exibir_frases() {
     if [[ -s "$ARQUIVO" ]]; then
-        echo -e "\n📖 ${BRANCO}Frases salvas:${RESET}\n"
+        echo -e "\n📖 ${BRANCO}Frases salvas:${RESET}"
+        echo -e ""  # Espaço antes de exibir as frases
         while IFS= read -r linha; do
             frase=$(echo "$linha" | sed -E 's/\(.*\)//' | sed -E 's/\[.*\]//')
             pronuncia=$(echo "$linha" | grep -oP '\(.*?\)')
@@ -45,14 +43,14 @@ exibir_frases() {
             echo -e "${BRANCO}Frase: $frase${RESET}"
             [[ -n "$pronuncia" ]] && echo -e "${AZUL}Pronúncia: $pronuncia${RESET}"
             [[ -n "$traducao" ]] && echo -e "${VERDE}Tradução: $traducao${RESET}"
-            echo -e "----------------------------------"  # Separador
+            echo ""
         done < "$ARQUIVO"
     else
         echo -e "${VERMELHO}Nenhuma frase adicionada ainda.${RESET}"
     fi
 }
 
-# Pesquisar frases por palavra-chave
+# Pesquisar frases por palavra-chave e exibir frase completa (com espaçamento)
 pesquisar_frases() {
     echo -e "${AZUL}Digite o termo de busca:${RESET}"
     read termo
@@ -62,8 +60,9 @@ pesquisar_frases() {
     if [[ -z "$resultado" ]]; then
         echo -e "${VERMELHO}Nenhuma frase encontrada.${RESET}"
     else
-        echo -e "\n🔎 ${BRANCO}Resultados encontrados:$(echo "$resultado" | wc -l)${RESET}\n"
-        echo "$resultado" | while IFS= read -r linha; do
+        echo -e "\n🔎 ${BRANCO}Resultados encontrados:${RESET}"
+        echo -e ""  # Espaço antes de exibir os resultados da pesquisa
+        echo -e "$resultado" | while IFS= read -r linha; do
             frase=$(echo "$linha" | sed -E 's/\(.*\)//' | sed -E 's/\[.*\]//')
             pronuncia=$(echo "$linha" | grep -oP '\(.*?\)')
             traducao=$(echo "$linha" | grep -oP '\[.*?\]')
@@ -71,25 +70,33 @@ pesquisar_frases() {
             echo -e "${BRANCO}Frase: $frase${RESET}"
             [[ -n "$pronuncia" ]] && echo -e "${AZUL}Pronúncia: $pronuncia${RESET}"
             [[ -n "$traducao" ]] && echo -e "${VERDE}Tradução: $traducao${RESET}"
-            echo -e "----------------------------------"
+            echo ""
         done
     fi
 }
 
+# Função para limpar o terminal
+limpar_terminal() {
+    clear
+}
+
 # Menu principal
 while true; do
-    echo -e "\n📚 ${BRANCO}Diário de Inglês - Anotações Ilimitadas${RESET}\n"
+    echo -e "\n📚 ${BRANCO}Diário de Inglês - Anotações Ilimitadas${RESET}"
+    echo -e ""  # Adiciona o espaço entre o título e as opções
     echo -e "1) ✏️  Adicionar frases"
     echo -e "2) 📖 Ver todas as frases"
     echo -e "3) 🔍 Pesquisar frases"
-    echo -e "4) ❌ Sair"
+    echo -e "4) 🧹 Limpar terminal"
+    echo -e "5) ❌ Sair"
     read -p "Escolha uma opção: " opcao
 
     case $opcao in
         1) adicionar_frases ;;
         2) exibir_frases ;;
         3) pesquisar_frases ;;
-        4) echo -e "${VERMELHO}Saindo...${RESET}"; exit 0 ;;
+        4) limpar_terminal ;;  # Limpar o terminal
+        5) echo -e "${VERMELHO}Saindo...${RESET}"; exit 0 ;;
         *) echo -e "${VERMELHO}Opção inválida!${RESET}" ;;
     esac
 done
