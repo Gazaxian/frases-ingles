@@ -51,7 +51,7 @@ Use esta opção para limpar o terminal, mantendo o ambiente de trabalho limpo e
 
 2. **Dê permissão de execução ao script**:
    ```bash
-   chmod +x diario-de-ingles.sh
+   chmod +x terminallang.sh
    ```
 
 3. **Execute o script**:
