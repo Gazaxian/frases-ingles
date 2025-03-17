@@ -42,7 +42,7 @@ Use esta opção para limpar o terminal, mantendo o ambiente de trabalho limpo e
 
 1. **Clone o repositório**:
    ```bash
-   git clone https://github.com/SEU_USUARIO/diario-de-ingles.git
+   git clone [https://github.com/Gazaxian/frases-ingles.git]
    ```
 
 2. **Dê permissão de execução ao script**:
