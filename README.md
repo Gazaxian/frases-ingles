@@ -1,14 +1,16 @@
-# Diário de Inglês - Anotações Ilimitadas
+# Terminallang
 
-Este script em **Bash** foi desenvolvido para ajudar no estudo de inglês, permitindo salvar frases, suas pronúncias e traduções, fazer buscas e navegar por essas anotações de forma simples e prática. O script também oferece funcionalidades como alterar o limite de frases exibidas por página e limpar o terminal.
+**Terminallang** é uma ferramenta simples e eficaz para o aprendizado de idiomas usando a linha de comando. Com esse script, você pode registrar, organizar e revisar frases em diferentes idiomas, ajudando a melhorar seu vocabulário e fluência.
+
+Este projeto é ideal para quem quer aprender idiomas de maneira prática e direta, utilizando um terminal para manter suas anotações e revisões organizadas.
 
 ## Funcionalidades
 
-- **Adicionar frases**: Salve frases em inglês com suas respectivas pronúncias e traduções.
-- **Ver todas as frases**: Visualize as frases salvas com paginação para navegação fácil.
-- **Pesquisar frases**: Realize buscas por palavras-chave nas frases salvas.
-- **Alterar limite de frases por página**: Modifique o número de frases que são exibidas por página.
-- **Limpar o terminal**: Limpe o terminal para manter o ambiente organizado.
+- **Adicionar frases**: Adicione frases em qualquer idioma, com a pronúncia e tradução opcional.
+- **Revisar frases**: Exiba as frases salvas com paginação, permitindo uma revisão eficiente.
+- **Pesquisar frases**: Encontre rapidamente frases por palavras-chave.
+- **Personalizar o limite de frases por página**: Defina o número de frases exibidas por página ao revisar ou buscar frases.
+- **Limpar o terminal**: Limpe o terminal para uma navegação mais organizada.
 
 ## Como Usar
 
@@ -33,16 +35,19 @@ Você pode alterar o número de frases exibidas por página, facilitando a naveg
 ### 5. Limpar o Terminal
 Use esta opção para limpar o terminal, mantendo o ambiente de trabalho limpo e organizado.
 
+
 ## Requisitos
 
-- Sistema operacional com suporte ao Bash (Linux, macOS, etc.).
-- O script utiliza comandos padrão do Bash como `grep`, `sed`, e `mkdir`.
+- **Linux, macOS ou Windows** com suporte a Bash.
+- **Bash** (O script utiliza comandos padrão do Bash como `grep`, `sed`, e `mkdir`.).
+- **Editor de texto** (opcional, para editar o arquivo de anotações).
+- 
 
 ## Como Rodar o Script
 
 1. **Clone o repositório**:
    ```bash
-   git clone https://github.com/Gazaxian/frases-ingles.git
+   git clone https://github.com/Gazaxian/terminallang.git
    ```
 
 2. **Dê permissão de execução ao script**:
@@ -52,12 +57,12 @@ Use esta opção para limpar o terminal, mantendo o ambiente de trabalho limpo e
 
 3. **Execute o script**:
    ```bash
-   ./diario-de-ingles.sh
+   ./terminallang.sh
    ```
 
 ## Personalizações
 
-- O arquivo onde as frases são armazenadas está configurado para ser salvo em `~/Documentos/Ingles/anotacoes.txt`. Caso deseje alterar, edite a variável `ARQUIVO` no início do script.
+- O arquivo onde as frases são armazenadas está configurado para ser salvo em `~/Documentos/TerminalLang/anotacoes.txt`. Caso deseje alterar, edite a variável `ARQUIVO` no início do script.
 - O número de frases por página pode ser ajustado a qualquer momento através da opção "Alterar limite de frases por página" no menu principal.
 
 ## Licença
