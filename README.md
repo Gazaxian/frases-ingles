@@ -39,7 +39,7 @@ Use esta opção para limpar o terminal, mantendo o ambiente de trabalho limpo e
 ## Requisitos
 
 - **Linux, macOS ou Windows** com suporte a Bash.
-- **Bash** (O script utiliza comandos padrão do Bash como `grep`, `sed`, e `mkdir`.).
+- **Bash** (O script utiliza comandos padrão do Bash como `grep`, `sed`, e `mkdir`).
 - **Editor de texto** (opcional, para editar o arquivo de anotações).
 
 ## Como Rodar o Script
