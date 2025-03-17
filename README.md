@@ -14,7 +14,19 @@ Este projeto é ideal para quem quer aprender idiomas de maneira prática e dire
 
 ## Como Usar
 
-### 1. Adicionar Frases
+### 1. Menu de Opções
+   Após iniciar o script, você verá um menu com as seguintes opções:
+
+   - `1) ✏️ Adicionar frases`
+   - `2) 📖 Ver todas as frases`
+   - `3) 🔍 Pesquisar frases`
+   - `4) ⚙️ Alterar limite de frases por página`
+   - `5) 🧹 Limpar terminal`
+   - `6) ❌ Sair`
+
+   Use os números para escolher a opção desejada.
+
+### 2. Adicionar Frases
 Para adicionar frases em inglês, basta digitar a frase, incluir a pronúncia entre parênteses e a tradução entre colchetes. Exemplo:
 
 ```
@@ -23,16 +35,16 @@ I am learning English. (ai ãm lêrning inglix) [Eu estou aprendendo inglês.]
 
 O script irá verificar se a frase já foi adicionada anteriormente, evitando duplicatas.
 
-### 2. Ver Todas as Frases
+### 3. Ver Todas as Frases
 Você pode visualizar todas as frases salvas com paginação, facilitando a navegação.
 
-### 3. Pesquisar Frases
+### 4. Pesquisar Frases
 Digite um termo de busca para localizar frases que contenham esse termo.
 
-### 4. Alterar Limite de Frases por Página
+### 5. Alterar Limite de Frases por Página
 Você pode alterar o número de frases exibidas por página, facilitando a navegação, especialmente se você tiver muitas frases salvas.
 
-### 5. Limpar o Terminal
+### 6. Limpar o Terminal
 Use esta opção para limpar o terminal, mantendo o ambiente de trabalho limpo e organizado.
 
 
