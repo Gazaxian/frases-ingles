@@ -73,7 +73,7 @@ Use esta opção para limpar o terminal, mantendo o ambiente de trabalho limpo e
 
 ## Personalizações
 
-- O arquivo onde as frases são armazenadas está configurado para ser salvo em `~/Documentos/Terminallang/anotacoes.txt`. Caso deseje alterar, edite a variável `ARQUIVO` no início do script.
+- O arquivo onde as frases são armazenadas está configurado para ser salvo em `~/anotacoes.txt`. Caso deseje alterar, edite a variável `ARQUIVO` no início do script.
 - O número de frases por página pode ser ajustado a qualquer momento através da opção "Alterar limite de frases por página" no menu principal.
 
 ## Licença
