@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Arquivo onde todas as frases serão armazenadas
-ARQUIVO="$HOME/Documentos/TerminalLang/anotacoes.txt"
+ARQUIVO="$HOME/Documentos/Terminallang/anotacoes.txt"
 
 # Criar diretório se não existir
 mkdir -p "$(dirname "$ARQUIVO")"
@@ -148,7 +148,7 @@ alterar_limite() {
 
 # Menu principal
 while true; do
-    echo -e "\n📚 ${BRANCO}TerminalLang- Anotações de Frases Ilimitadas${RESET}\n"
+    echo -e "\n📚 ${BRANCO}Terminallang - Anotações de Frases Ilimitadas${RESET}\n"
     echo -e "${AZUL}1) ✏️  Adicionar frases${RESET}"
     echo -e "${VERDE}2) 📖 Ver todas as frases${RESET}"
     echo -e "${AMARELO}3) 🔍 Pesquisar frases${RESET}"
