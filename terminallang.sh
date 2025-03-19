@@ -21,7 +21,7 @@ limite=5
 
 # Adicionar frases ao arquivo (evitando duplicatas)
 adicionar_frases() {
-    echo -e "${AZUL}Digite frases de inglês (inclua a pronúncia entre () e a tradução entre [])."
+    echo -e "${AZUL}Digite frases (inclua a pronúncia entre () e a tradução entre [])."
     echo -e "Pressione Enter sem digitar nada para sair.${RESET}"
 
     while true; do
