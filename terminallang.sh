@@ -87,7 +87,8 @@ pesquisar_frases() {
     echo -e "${AZUL}Digite o termo de busca:${RESET}"
     read termo
 
-    mapfile -t resultados < <(grep -i --color=never "$termo" "$ARQUIVO" 2>/dev/null)
+    # Usa uma expressão regular para garantir que o termo seja isolado (não parte de outra palavra)
+    mapfile -t resultados < <(grep -i -E "\b$termo\b" "$ARQUIVO" 2>/dev/null)
     
     if [[ ${#resultados[@]} -eq 0 ]]; then
         echo -e "${VERMELHO}Nenhuma frase encontrada.${RESET}"
@@ -129,6 +130,7 @@ pesquisar_frases() {
         done
     fi
 }
+
 
 # Limpar terminal
 limpar_terminal() {
